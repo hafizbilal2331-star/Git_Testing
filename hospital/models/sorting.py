@@ -10,8 +10,3 @@ def partition(array, low, high):
 
     array[i+1], array[high] = array[high], array[i+1]
     return i+1
-<<<<<<< HEAD
-=======
-
-
->>>>>>> e57eb2332e3ac29999d59ebb7a7bb59024a3caa5
