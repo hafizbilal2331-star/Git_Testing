@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="hospital.appointmentlistview">
+        <div class="listview-header">
+            <button class="btn-create" t-on-click="toggleCreateForm">
+                <t t-if="state.showCreateForm">✖ Close Form</t>
+                <t t-else="">➕ Create Appointment</t>
+            </button>
+        </div>
+
+        <t t-if="state.showCreateForm">
+            <AppointmentFormView record="state.selectedRecord" onSave.bind="onSave"/>
+        </t>
+        <t t-else="">
+        <div class="appointments-list">
+            <h1 class="page-title">Appointments</h1>
+
+            <table class="appointment-table">
+                <thead>
+                    <tr>
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>State</th>
+                        <th>Note</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="state.records" t-as="record" t-key="record.id">
+                        <tr>
+                            <td><t t-esc="record.patient_id"/></td>
+                            <td><t t-esc="record.doctor_id"/></td>
+                            <td><t t-esc="record.date_appointment"/></td>
+                            <td><t t-esc="record.state"/></td>
+                            <td><t t-esc="record.note"/></td>
+                            <td>
+                                <button class="btn-edit"
+                                        t-on-click.stop="() => this.editRecord(record.id)">
+                                    ✏ Edit
+                                </button>
+                                <button class="btn-delete"
+                                        t-on-click.stop="() => this.deleteRecord(record.id)">
+                                    🗑 Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        </t>
+    </t>
+</templates>

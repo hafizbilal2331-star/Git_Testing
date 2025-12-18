@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="hospital_frontend_assets" model="ir.asset">
+            <field name="name">Hospital Website Assets</field>
+            <field name="bundle">web.assets_frontend</field>
+            <field name="path">hospital/static/src/css/custom.css</field>
+            <field name="path">hospital/static/src/js/custom.js</field>
+        </record>
+    </data>
+</odoo>
+
+

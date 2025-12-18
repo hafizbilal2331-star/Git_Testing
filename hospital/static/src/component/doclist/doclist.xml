@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="hospital.doclist">
+
+        <div class="listview-header">
+            <button class="btn-create" t-on-click="toggleCreateForm">
+                <t t-if="state.showCreateForm">✖ Close Form</t>
+                <t t-else="">➕ Create Doctor</t>
+            </button>
+        </div>
+
+        <t t-if="state.showCreateForm">
+            <DocFormView record="state.selectedRecord" onSave.bind="onSave"/>
+        </t>
+        <t t-else="">
+        <div class="patients-list">
+            <h1 class="page-title">Doctors</h1>
+
+            <table class="patient-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>Address</th>
+                        <th>Patients</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="state.records" t-as="record" t-key="record.id">
+                        <tr>
+                            <td><t t-esc="record.name"/></td>
+                            <td><t t-esc="record.gender"/></td>
+                            <td><t t-esc="record.dob"/></td>
+                            <td><t t-esc="record.address"/></td>
+                            <td>
+                            <t t-esc="state.patientsByDoctor[record.id] || '0 record'"/>
+                            </td>
+                            <td>
+                                <button class="btn-edit"
+                                        t-on-click.stop="() => this.editRecord(record.id)">
+                                    ✏ Edit
+                                </button>
+                                <button class="btn-delete"
+                                        t-on-click.stop="() => this.deleteRecord(record.id)">
+                                    🗑 Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        </t>
+    </t>
+</templates>

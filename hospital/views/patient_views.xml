@@ -1,0 +1,83 @@
+<odoo>
+    <!-- FORM VIEW -->
+    <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+
+                <sheet>
+                    <!--                    this is for smart button-->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_appointments" type="object" class="oe_stat_button" icon="fa-calendar">
+
+                            <div class="o_stat_info">
+                                <field name="appointment_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Appointments</span>
+
+                            </div>
+                        </button>
+                    </div>
+                    <group string="PATIENT DETAILS">
+                        <!-- this is for left side fields occur -->
+                        <group>
+                            <field name="form_no"/>
+                            <field name="name"/>
+                            <field name="dob"/>
+                            <field name="gender"/>
+                            <field name="address"/>
+                            <field name="appointment_ids"/>
+
+                        </group>
+                        <!--  this is for right side fields occur -->
+
+                        <group>
+                            <field name="appointment_history"/>
+                            <field name="blood_group"/>
+                            <field name="age"/>
+                            <field name="doctor_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- LIST VIEW -->
+    <record id="view_hospital_patient_list" model="ir.ui.view">
+        <field name="name">hospital.patient.list</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <list string="Patient">
+                <field name="form_no"/>
+                <field name="name"/>
+                <field name="dob"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="appointment_history"/>
+                <field name="address"/>
+
+            </list>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- MENU -->
+    <menuitem id="menu_hospital_root" name="Hospital Management"/>
+<!--    <menuitem id="menu_hospital_patient" name="Patient" parent="menu_hospital_root" action="action_hospital_patient"-->
+<!--              sequence="10"/>-->
+
+    <record id="list_view_action" model="ir.actions.client">
+        <field name="name">Patient List View</field>
+        <field name="tag">hospital.action_list_view</field>
+    </record>
+
+    <menuitem id="menu_hospital_list_view_item" name="Patient OWL" parent="menu_hospital_root" action="list_view_action"
+              sequence="15"/>
+</odoo>

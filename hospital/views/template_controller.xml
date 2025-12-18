@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="patients_list" name="Patients List">
+        <t t-call="website.layout">
+
+            <div class="container mt-4 patients-list">
+                <h2 class="page-title">Patients List</h2>
+                <ul class="patient-list">
+                    <t t-foreach="patients" t-as="p">
+                        <li class="patient-item">
+                            <a t-att-href="'/patients/%s' % p.id" class="patient-link">
+                                <t t-esc="p.name"/>
+                            </a>
+                        </li>
+                    </t>
+                </ul>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="patient_detail" name="Patient Detail">
+        <t t-call="website.layout">
+
+            <div class="container mt-4 patient-detail">
+                <h2 class="page-title">Patient Details</h2>
+                <p><strong>Name:</strong><t t-esc="patient.name"/></p>
+                <p><strong>Age:</strong> <t t-esc="patient.age"/></p>
+                <p><strong>Gender:</strong> <t t-esc="patient.gender"/></p>
+                <p><strong>Doctor:</strong> <t t-esc="patient.doctor_id.name"/></p>
+                <a href="/patients" class="btn btn-primary back-btn">Back to List</a>
+            </div>
+        </t>
+    </template>
+</odoo>

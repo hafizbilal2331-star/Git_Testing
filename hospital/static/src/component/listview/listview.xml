@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="hospital.listview">
+
+        <div class="listview-header">
+            <button class="btn-create" t-on-click="toggleCreateForm">
+                <t t-if="state.showCreateForm">✖ Close Form</t>
+                <t t-else="">➕ Create Patient</t>
+            </button>
+        </div>
+
+        <t t-if="state.showCreateForm">
+            <FormView record="state.selectedRecord" onSave.bind="onSave"/>
+        </t>
+        <t t-else="">
+
+        <div class="patients-list">
+            <h1 class="page-title">Patients</h1>
+
+            <table class="patient-table">
+                <thead>
+                    <tr>
+                        <th>Form No</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>Address</th>
+                        <th>doctor</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="state.records" t-as="record" t-key="record.id">
+                        <tr>
+                            <td><t t-esc="record.form_no"/></td>
+                            <td><t t-esc="record.name"/></td>
+                            <td><t t-esc="record.age"/></td>
+                            <td><t t-esc="record.gender"/></td>
+                            <td><t t-esc="record.dob"/></td>
+                            <td><t t-esc="record.address"/></td>
+                            <td><t t-esc="record.doctor_id"/></td>
+                            <td>
+                                <button class="btn-edit"
+                                        t-on-click.stop="() => this.editRecord(record.id)">
+                                    ✏ Edit
+                                </button>
+                                <button class="btn-delete"
+                                        t-on-click.stop="() => this.deleteRecord(record.id)">
+                                    🗑 Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        </t>
+    </t>
+</templates>

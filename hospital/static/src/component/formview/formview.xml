@@ -1,0 +1,50 @@
+<templates xml:space="preserve">
+    <t t-name="hospital.formview">
+        <div class="form-container">
+            <h2>
+                <t t-if="state.id">✏ Edit Patient</t>
+                <t t-else="">Create Patient</t>
+            </h2>
+
+            <form t-on-submit.prevent="saveRecord">
+                <div class="mb-3">
+                    <label>Form No:</label>
+                    <input type="text" t-model="state.form_no"/>
+                </div>
+                <div class="mb-3">
+                    <label>Name:</label>
+                    <input type="text" t-model="state.name"/>
+                </div>
+                <div class="mb-3">
+                    <label>Gender:</label>
+                    <select t-model="state.gender">
+                        <option value="">--Select--</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>DOB:</label>
+                    <input type="date" t-model="state.dob"/>
+                </div>
+                <div class="mb-3">
+                    <label>Address:</label>
+                    <textarea t-model="state.address"/>
+                </div>
+                <div class="mb-3">
+                    <label>Doctor</label>
+                    <select t-model="state.doctor_id">
+                        <option value="">Select Doctor</option>
+                        <t t-foreach="state.doctors" t-as="doc" t-key="doc.id">
+                                <option t-att-value="doc.id"><t t-esc="doc.name"/></option>
+                            </t>
+                    </select>
+                </div>
+                <div class="footer">
+                   <button type="submit">💾 Save</button>
+                    <button type="reset">🆑 Clear</button>
+                </div>
+            </form>
+        </div>
+    </t>
+</templates>

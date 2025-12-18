@@ -1,0 +1,53 @@
+<templates xml:space="preserve">
+    <t t-name="hospital.appointmentformview">
+        <div class="form-container">
+            <h2>
+                <t t-if="state.id">✏ Edit Appointment</t>
+                <t t-else="">Create Appointment</t>
+            </h2>
+
+            <form t-on-submit.prevent="saveRecord">
+                <div class="mb-3">
+                    <label>Patient:</label>
+                    <select t-model="state.patient_id">
+                        <option value="">Select Patient</option>
+                        <t t-foreach="state.patients" t-as="patient" t-key="patient.id">
+                            <option t-att-value="patient.id"><t t-esc="patient.name"/></option>
+                        </t>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Doctor:</label>
+                    <select t-model="state.doctor_id">
+                        <option value="">Select Doctor</option>
+                        <t t-foreach="state.doctors" t-as="doctor" t-key="doctor.id">
+                            <option t-att-value="doctor.id"><t t-esc="doctor.name"/></option>
+                        </t>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Date:</label>
+                    <input type="date" t-model="state.date_appointment"/>
+                </div>
+                <div class="mb-3">
+                    <label>State:</label>
+                    <select t-model="state.state">
+                        <option value="draft">Draft</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="ongoing">Ongoing</option>
+                        <option value="done">Done</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Note:</label>
+                    <textarea t-model="state.note"/>
+                </div>
+                <div class="footer">
+                   <button type="submit">💾 Save</button>
+                    <button type="reset">🆑 Clear</button>
+                </div>
+            </form>
+        </div>
+    </t>
+</templates>
