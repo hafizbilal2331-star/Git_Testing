@@ -7,17 +7,18 @@
         <field name="arch" type="xml">
             <form string="Create Appointment">
                 <group>
-                    <group>
+
+                    <group string="Patient Data">
                         <field name="patient_id"/>
-                        <field name="doctor_id"/>
+                        <field name="reason"/>
                     </group>
-                    <group>
+
+                    <group string="Doctor Data">
+                        <field name="doctor_id"/>
                         <field name="date_appointment"/>
                         <field name="status"/>
                     </group>
-                </group>
-                <group>
-                    <field name="reason"/>
+
                 </group>
 
                 <footer>
@@ -39,6 +40,7 @@
         <field name="res_model">hospital.appointment.wizard</field>
         <field name="view_mode">form</field>
         <field name="view_id" ref="view_hospital_appointment_wizard_form"/>
-        <field name="target">new</field> </record>
+        <field name="target">new</field>
+    </record>
 
 </odoo>

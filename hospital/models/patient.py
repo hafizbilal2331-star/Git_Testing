@@ -51,16 +51,6 @@ class HospitalPatient(models.Model):
 
         }
 
-    # @api.depends('dob')
-    # def _compute_age(self):
-    #     today = date.today()
-    #     for rec in self:
-    #         if rec.dob:
-    #             rec.age = today.year - rec.dob.year - (
-    #                     (today.month, today.day) < (rec.dob.month, rec.dob.day)
-    #             )
-    #         else:
-    #             rec.age = 0
 
     # Custom decorator
     @api.compute_age("dob", "age")

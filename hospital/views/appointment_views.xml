@@ -14,15 +14,15 @@
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,ongoing,done"/>
                 </header>
                 <sheet>
-                    <group string="APPOINTMENT DETAILS">
-                        <!--                        this is for left side fields occur -->
-                        <group>
+                    <group>
+                        <group string="Patient Info.">
                             <field name="doctor_id"/>
                             <field name="patient_id"/>
+                        </group>
+                        <group string="Status">
                             <field name="date_appointment"/>
                             <field name="state"/>
                         </group>
-                        <!--                        this is for right side fields occur -->
                     </group>
                 </sheet>
             </form>
@@ -61,7 +61,7 @@
     <menuitem id="menu_hospital_app_list_view_item" name="Appointment OWL" parent="menu_hospital_root" action="app_list_view_action"
               sequence="45"/>
 
-<!--    <menuitem id="menu_hospital_appointment" name="Appointment" parent="menu_hospital_root"-->
-<!--              action="action_hospital_appointment"-->
-<!--              sequence="40"/>-->
+    <menuitem id="menu_hospital_appointment" name="Appointment" parent="menu_hospital_root"
+              action="action_hospital_appointment"
+              sequence="40"/>
 </odoo>

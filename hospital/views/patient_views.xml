@@ -21,23 +21,24 @@
                         </button>
                     </div>
 
-                    <group string="PATIENT DETAILS">
-                        <group>
+                    <group>
+                        <group string="Personal Info.">
                             <field name="form_no"/>
                             <field name="name"/>
-                            <field name="dob"/>
-                            <field name="gender"/>
-                            <field name="blood_group"/>
                             <field name="address"/>
-                            <field name="appointment_ids"/>
-                        </group>
-                        <group>
-                            <field name="appointment_history"/>
-                            <field name="age"/>
-                            <field name="doctor_id"/>
                             <field name="email"/>
                             <field name="phone"/>
-
+                        </group>
+                        <group string="Medical Info.">
+                            <field name="dob"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="blood_group"/>
+                            <field name="appointment_history"/>
+                        </group>
+                        <group string="Doctor Info.">
+                            <field name="doctor_id"/>
+                            <field name="appointment_ids"/>
                         </group>
                     </group>
                 </sheet>
