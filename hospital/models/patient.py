@@ -6,18 +6,19 @@ from ..utils.decorators import compute_age
 
 class HospitalPatient(models.Model):
     _name = 'hospital.patient'
+    _inherit = ['hospital.person.mixin']
     _description = 'Patient'
 
     name = fields.Char(string="Full Name", required=True)
     form_no = fields.Char(string="Form No", required=True, unique=True)
-    address = fields.Text(string='Address')
+    # address = fields.Text(string='Address')
     age = fields.Integer(string='Age' , compute='_compute_age', store=True, readonly=True)
     dob = fields.Date(string="Date of Birth")
-    gender = fields.Selection([
-        ('male', 'Male'),
-        ('female', 'Female'),
-        ('other', 'Other')
-    ], string="Gender")
+    # gender = fields.Selection([
+    #     ('male', 'Male'),
+    #     ('female', 'Female'),
+    #     ('other', 'Other')
+    # ], string="Gender")
     appointment_history = fields.Text(string="Appointment History")
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
     appointment_ids=fields.One2many('hospital.appointment','patient_id',string="Appointments")

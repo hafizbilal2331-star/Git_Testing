@@ -3,20 +3,21 @@ from odoo import models, fields
 
 class HospitalDoctor(models.Model):
     _name = 'hospital.doctor'
+    _inherit = ['hospital.person.mixin']
     _description = 'Doctors'
 
 
     name = fields.Char(string="Name", )
-    address = fields.Text(string='Address')
-    phone = fields.Integer(string='Phone No')
+    # address = fields.Text(string='Address')
+    # phone = fields.Integer(string='Phone No')
     dob = fields.Date(string="Date of Birth")
     patient_ids= fields.One2many('hospital.patient','doctor_id',string="")
     appointment_count = fields.Integer(string='Appointment Count', compute='compute_appointment_count')
-    gender = fields.Selection([
-        ('male', 'Male'),
-        ('female', 'Female'),
-        ('other', 'Other')
-    ], string="Gender")
+    # gender = fields.Selection([
+    #     ('male', 'Male'),
+    #     ('female', 'Female'),
+    #     ('other', 'Other')
+    # ], string="Gender")
 
 
 
