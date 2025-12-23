@@ -8,7 +8,7 @@ class HospitalPatient(models.Model):
 
     doctor_id= fields.Many2one('hospital.doctor', string="Ref", )
     patient_id = fields.Many2one('hospital.patient', string="Patient")
-    date_appointment = fields.Date(string="Date")
+    date_appointment = fields.Date(string="Appointment Date")
     note = fields.Text(string="Noted")
     state = fields.Selection([
         ('draft', 'Draft'),
