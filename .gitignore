@@ -1,5 +1,21 @@
+# Python internals
 __pycache__/
-*.pyc
-.DS_Store
+*.py[cod]
+*$py.class
+
+# Odoo specific
+*.conf
 .env
-venv/
+/venv/
+/env/
+*.log
+/filestore/
+/session_store/
+
+# System files (Mac/Windows)
+.DS_Store
+Thumbs.db
+
+# Editor settings (VS Code, PyCharm)
+.vscode/
+.idea/

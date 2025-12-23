@@ -16,6 +16,7 @@
         'views/doctor_views.xml',
         'views/template_controller.xml',
         'views/assets.xml',
+        'wizard/appointment_wizard_view.xml',
 
 
 
